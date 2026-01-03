@@ -22,7 +22,7 @@ function VotingForm({ token, nominees, setNominees }) {
         if (!nomineeId) continue;
 
         const res = await fetch(
-          `http://localhost:5000/api/votes`,
+          `https://voting-system-zcs7.onrender.com/api/votes`,
           {
             method: "POST",
             headers: {

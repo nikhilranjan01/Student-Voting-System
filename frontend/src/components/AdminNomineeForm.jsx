@@ -11,7 +11,7 @@ function AdminNomineeForm({ token, setNominees }) {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/nominees", {
+      const res = await fetch("https://voting-system-zcs7.onrender.com/api/nominees", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

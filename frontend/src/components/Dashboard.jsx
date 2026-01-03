@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchNominees = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/nominees", {
+        const response = await axios.get("https://voting-system-zcs7.onrender.com/api/nominees", {
           headers: { "x-auth-token": localStorage.getItem("token") },
         });
         setNominees(response.data);
@@ -33,7 +33,7 @@ const Dashboard = () => {
   const handleVote = async (nomineeId, position) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/votes",
+        "https://voting-system-zcs7.onrender.com/api/votes",
         { nomineeId, position },
         { headers: { "x-auth-token": localStorage.getItem("token") } }
       );

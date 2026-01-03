@@ -33,7 +33,7 @@ const AdminDashboard = () => {
     const fetchResults = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/votes/results",
+          "https://voting-system-zcs7.onrender.com/api/votes/results",
           { headers: { "x-auth-token": localStorage.getItem("token") } }
         );
         setResults(response.data);
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchNominees = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/nominees", {
+        const response = await axios.get("https://voting-system-zcs7.onrender.com/api/nominees", {
           headers: { "x-auth-token": localStorage.getItem("token") },
         });
         setNominees(response.data);
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/nominees",
+        "https://voting-system-zcs7.onrender.com/api/nominees",
         { name: nomineeName, position },
         { headers: { "x-auth-token": localStorage.getItem("token") } }
       );
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
   // ❌ Delete nominee
   const deleteNominee = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/nominees/${id}`, {
+      await axios.delete(`https://voting-system-zcs7.onrender.com/api/nominees/${id}`, {
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
       setNominees(nominees.filter((nominee) => nominee._id !== id));
