@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const nomineeRoutes = require("./routes/nominees");
@@ -8,15 +7,23 @@ const { connectDB } = require("./config/db");
 
 const app = express();
 
-// Middleware
-// app.use(cors());
+// ✅ CORS (FINAL CORRECT)
 app.use(cors({
-  origin: "student-voting-system-9hmat1pir.vercel.app",
-  credentials: true
+  origin: [
+    "https://student-voting-system-omega.vercel.app",
+    "http://localhost:5173"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+// ✅ Preflight support
+app.options("*", cors());
+
 app.use(express.json());
 
-// Connect to MongoDB
+// DB
 connectDB();
 
 // Routes
