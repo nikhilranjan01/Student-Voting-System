@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,18 @@ const Login = ({ setToken }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+ const [health, setHealth] = useState("");
 
+  useEffect(() => {
+    fetch("https://voting-system-zcs7.onrender.com")
+      .then((res) => res.text())   // because response is a string
+      .then((data) => {
+        setHealth(data);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -46,7 +58,9 @@ const Login = ({ setToken }) => {
         </div>
 
         <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-6">
-          Welcome Back 👋
+          Welcome Back 👋  
+          <br />
+          {health}
         </h2>
 
         {error && (
