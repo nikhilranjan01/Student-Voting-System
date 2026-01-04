@@ -33,6 +33,7 @@ const Login = ({ setToken }) => {
         password,
       });
 
+
       const token = response.data.token;
 
       localStorage.setItem("token", token);
@@ -56,7 +57,7 @@ const Login = ({ setToken }) => {
       style={{ backgroundImage: "url('/images/background.jpeg')" }}
     >
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-xl w-full max-w-md border border-white/30">
-        
+
         {/* Logo */}
         <div className="flex justify-center mb-4">
           <img
