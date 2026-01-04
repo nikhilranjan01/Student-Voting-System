@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import api from "../api/axios";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+const BASE_URL = "https://voting-system-zcs7.onrender.com";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
