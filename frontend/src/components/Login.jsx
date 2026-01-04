@@ -29,7 +29,9 @@ const Login = ({ setToken }) => {
     try {
       const response = await axios.post(
         "https://voting-system-zcs7.onrender.com/api/auth/login",
-        { email, password }
+        
+        { email, password },
+        {withCredentials:true}
       );
 
       localStorage.setItem("token", response.data.token);
